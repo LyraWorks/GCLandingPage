@@ -3,41 +3,57 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gallumbos Ciruelo: ropa interior con personalidad, comodidad y un toque de humor.">
-    <title>Gallumbos Ciruelo | Ropa interior con personalidad</title>
+    <!-- Esta es la información que necesita el navegador.
+    No es el contenido que aparece dentro de la web. -->
 
-    <!-- Tipografías de Google -->
+    <meta charset="UTF-8">
+    <!-- Permite que se vean bien las tildes y las eñes. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hace que la web tenga en cuenta el ancho de la pantalla del móvil. -->
+
+    <meta name="description" content="Gallumbos Ciruelo: ropa interior con una GRAN personalidad.">
+    <!-- Es una pequeña descripción de la página. -->
+
+    <title>Gallumbos Ciruelo</title>
+    <!-- Este es el nombre que aparece en la pestaña del navegador. -->
+
+    <!-- Cargo las letras que quiero utilizar en la web.
+    Necesitas conexión a Internet para que se descarguen. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Archivo CSS -->
+    <!-- Conecto este HTML con el archivo donde escribiré el CSS.
+    La ruta significa: entra en la carpeta css y busca style.css. -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+
 <body>
 
-    <!-- Enlace para saltar directamente al contenido -->
+    <!-- Este enlace permite saltarse el menú e ir al contenido principal
+    cuando se navega con teclado. -->
     <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
 
-    <!-- CABECERA -->
-    <header class="cabecera">
-        <a href="#inicio" class="logo-enlace" aria-label="Gallumbos Ciruelo, ir al inicio">
-            <img src="https://i.ibb.co/HftbSwhn/logo-png-gallumbos-ciruelo-1.png"
-                 alt="Logo de Gallumbos Ciruelo"
-                 class="logo">
-        </a>
+    <!-- Cabecera con el nombre de la marca y su frase. -->
+    <header class="cabecera" id="inicio">
+        <div class="logo">
+            <img
+                src="https://placehold.co/100x100/181822/b100ff?text=GC"
+                alt="Logo de Gallumbos Ciruelo"
+            >
 
-        <div class="cabecera-texto">
-            <h1>Gallumbos Ciruelo</h1>
-            <p>Ropa interior con más dignidad que muchos lunes</p>
+            <div class="nombre-marca">
+                <h1>Gallumbos Ciruelo</h1>
+                <p>Ropa interior con más dignidad que muchos lunes</p>
+            </div>
         </div>
     </header>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
-    <nav class="navegacion" aria-label="Menú principal">
+    <!-- Este menú lleva a las distintas partes de la misma página.
+    El texto después de # tiene que coincidir con el id de la sección. -->
+    <nav class="menu" aria-label="Menú principal">
         <a href="#inicio">Inicio</a>
         <a href="#productos">Productos</a>
         <a href="#resenas">Reseñas</a>
@@ -46,140 +62,106 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <!-- MARQUESINA INFORMATIVA -->
-    <div class="barra-marca">
-        <div class="marquesina">
-            <div class="marquesina-track">
-                <span>🚚 Envíos 24/48h · 🌿 Algodón 100% · 🇪🇸 Hecho en España · </span>
-                <span aria-hidden="true">🚚 Envíos 24/48h · 🌿 Algodón 100% · 🇪🇸 Hecho en España · </span>
-            </div>
+    <!-- Barra de texto en movimiento.
+    Repito el mensaje para que la animación pueda hacer un bucle continuo.
+    El movimiento se hará con CSS, no con JavaScript. -->
+    <div class="marquesina">
+        <div class="marquesina-contenido">
+            <span>Envíos discretos · Comodidad diaria · Dignidad garantizada · </span>
+            <span aria-hidden="true">Envíos discretos · Comodidad diaria · Dignidad garantizada · </span>
         </div>
     </div>
 
     <main id="contenido">
 
-        <!-- INICIO -->
-        <section id="inicio" class="inicio">
-            <div class="inicio-contenido">
-                <p class="etiqueta">BIENVENIDO AL LADO CÓMODO DE LA VIDA</p>
+        <!-- Portada: título, explicación y enlaces para ir a otras secciones. -->
+        <section class="portada">
+            <div class="portada-texto">
+                <p class="etiqueta">BIENVENIDO A TU NUEVA OBSESIÓN</p>
 
-                <h2>Tu ropa interior también tiene personalidad.</h2>
+                <h2>Tu comodidad también tiene personalidad.</h2>
 
-                <p class="inicio-descripcion">
-                    Diseñada para sobrevivir a los lunes, las citas incómodas
-                    y esos días en los que solo quieres estar en casa.
+                <p>
+                    Gallumbos para el día a día, para hacer deporte
+                    y para esos días en los que necesitas un extra de dignidad.
                 </p>
 
-                <div class="inicio-botones">
-                    <a href="#productos" class="btn btn-principal">Ver productos</a>
-                    <a href="#nosotros" class="btn btn-secundario">Conócenos</a>
-                </div>
+                <a class="boton boton-principal" href="#productos">Ver productos</a>
+                <a class="boton boton-secundario" href="#contacto">Tengo una duda</a>
             </div>
 
-            <div class="inicio-decoracion" aria-hidden="true">
-                <span class="circulo-decorativo circulo-uno"></span>
-                <span class="circulo-decorativo circulo-dos"></span>
-                <span class="texto-decorativo">COMODIDAD<br>SIN DRAMAS</span>
-                <span class="emoji-decorativo">🍑</span>
+            <div class="portada-decoracion" aria-hidden="true">
+                🍑
             </div>
         </section>
 
-        <!-- PRODUCTOS -->
-        <section id="productos" class="seccion productos">
-            <div class="titulo-seccion">
+        
+        <!-- Productos: cada article es una tarjeta independiente.
+        Para añadir otro producto, puedo copiar una tarjeta completa
+        y cambiar su foto, nombre, descripción y precio. -->
+
+        <section class="seccion productos" id="productos">
+
+            <div class="encabezado-seccion">
                 <p class="etiqueta">NUESTRA COLECCIÓN</p>
-                <h2>Elige tu armadura</h2>
-                <p>Porque hasta tus partes nobles merecen un buen diseño.</p>
+                <h2>Elige tu gallumbo</h2>
+                <p>Hay uno para cada ocasión. Y para cada nivel de drama.</p>
             </div>
 
-            <div class="productos-grid">
+            <div class="rejilla-productos">
 
-                <!-- Producto 1 -->
-                <article class="producto">
-                    <div class="producto-imagen imagen-ciruela">
-                        <span class="producto-emoji" aria-hidden="true">🍑</span>
-                        <span class="producto-badge">Top ventas</span>
-                    </div>
+                <article class="tarjeta-producto">
+                    <img src="img/NORMALES2.png" alt="Gallumbo Cotidiano">
 
                     <div class="producto-info">
-                        <p class="producto-categoria">COLECCIÓN CLÁSICA</p>
-                        <h3>El Ciruelón</h3>
-                        <p class="producto-descripcion">
-                            El clásico de toda la vida. Cómodo, discreto y preparado
-                            para cualquier situación.
-                        </p>
+                        <h3>Gallumbo Cotidiano</h3>
+                        <p>Para sobrevivir al lunes y a cualquier otro día.</p>
+                        <p class="precio">12,99 €</p>
 
-                        <div class="producto-pie">
-                            <span class="precio">14,99 €</span>
-                        </div>
-
+                        <!-- details y summary permiten abrir y cerrar
+                        información sin tener que programar JavaScript. -->
                         <details class="detalles-producto">
-                            <summary class="btn btn-principal btn-detalles">Ver detalles</summary>
-                            <div class="detalles-contenido">
-                                <p><strong>Tejido:</strong> Algodón suave.</p>
-                                <p><strong>Ajuste:</strong> Cómodo y flexible.</p>
-                                <p><strong>Ideal para:</strong> El día a día.</p>
-                            </div>
+                            <summary>Ver detalles</summary>
+                            <p>
+                                Un básico para el día a día, pensado para
+                                acompañarte sin complicaciones.
+                            </p>
                         </details>
                     </div>
                 </article>
 
-                <!-- Producto 2 -->
-                <article class="producto">
-                    <div class="producto-imagen imagen-neon">
-                        <span class="producto-emoji" aria-hidden="true">💜</span>
-                        <span class="producto-badge badge-nuevo">Nuevo</span>
-                    </div>
+                <article class="tarjeta-producto">
+                    <img src="img/SPORT1.png" alt="Gallumbo Sport">
 
                     <div class="producto-info">
-                        <p class="producto-categoria">COLECCIÓN NEÓN</p>
-                        <h3>El Moradito</h3>
-                        <p class="producto-descripcion">
-                            Para quienes no han nacido para pasar desapercibidos.
-                            Actitud por delante.
-                        </p>
-
-                        <div class="producto-pie">
-                            <span class="precio">17,99 €</span>
-                        </div>
+                        <h3>Gallumbo Sport</h3>
+                        <p>Para moverte mucho y quejarte lo justo.</p>
+                        <p class="precio">12,99 €</p>
 
                         <details class="detalles-producto">
-                            <summary class="btn btn-principal btn-detalles">Ver detalles</summary>
-                            <div class="detalles-contenido">
-                                <p><strong>Tejido:</strong> Algodón suave.</p>
-                                <p><strong>Ajuste:</strong> Flexible y ligero.</p>
-                                <p><strong>Ideal para:</strong> Darle color a la rutina.</p>
-                            </div>
+                            <summary>Ver detalles</summary>
+                            <p>
+                                Una opción para quienes buscan comodidad
+                                cuando toca estar en movimiento.
+                            </p>
                         </details>
                     </div>
                 </article>
 
-                <!-- Producto 3 -->
-                <article class="producto">
-                    <div class="producto-imagen imagen-premium">
-                        <span class="producto-emoji" aria-hidden="true">👑</span>
-                        <span class="producto-badge badge-premium">Premium</span>
-                    </div>
+                <article class="tarjeta-producto">
+                    <img src="img/PREMIUM1.png" alt="Gallumbo Premium">
 
                     <div class="producto-info">
-                        <p class="producto-categoria">COLECCIÓN PREMIUM</p>
-                        <h3>El Señor Ciruelo</h3>
-                        <p class="producto-descripcion">
-                            Para quienes saben que la comodidad no está reñida
-                            con la elegancia.
-                        </p>
-
-                        <div class="producto-pie">
-                            <span class="precio">21,99 €</span>
-                        </div>
+                        <h3>Gallumbo Premium</h3>
+                        <p>Porque a veces toca darse un capricho.</p>
+                        <p class="precio">16,99 €</p>
 
                         <details class="detalles-producto">
-                            <summary class="btn btn-principal btn-detalles">Ver detalles</summary>
-                            <div class="detalles-contenido">
-                                <p><strong>Tejido:</strong> Algodón de tacto suave.</p>
-                                <p><strong>Ajuste:</strong> Ergonómico.</p>
-                                <p><strong>Ideal para:</strong> Quienes buscan un extra de comodidad.</p>
-                            </div>
+                            <summary>Ver detalles</summary>
+                            <p>
+                                La opción para quienes quieren darle un
+                                toque especial a su colección.
+                            </p>
                         </details>
                     </div>
                 </article>
@@ -187,205 +169,223 @@
             </div>
         </section>
 
-        <!-- RESEÑAS -->
-        <section id="resenas" class="seccion resenas">
-            <div class="titulo-seccion">
-                <p class="etiqueta">EL PÚBLICO HA HABLADO</p>
-                <h2>Opiniones con fundamento</h2>
-                <p>La comodidad es importante. La opinión de quien la disfruta, también.</p>
+    
+        <!-- Reseñas de ejemplo para completar el diseño de la web.
+        Si se publicara de verdad, habría que sustituirlas por opiniones reales. -->
+
+        <section class="seccion resenas" id="resenas">
+
+            <div class="encabezado-seccion">
+                <p class="etiqueta">LA OPINIÓN DEL PUEBLO</p>
+                <h2>Lo que dicen nuestros clientes</h2>
+                <p>Porque una buena decisión también merece reconocimiento.</p>
             </div>
 
-            <div class="resenas-grid">
-                <article class="resena">
-                    <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
-                    <blockquote>
-                        «Por fin unos gallumbos que no intentan abandonarme
-                        a mitad del día».
-                    </blockquote>
-                    <p class="resena-autor">— Carlos M.</p>
+            <div class="rejilla-resenas">
+
+                <article class="tarjeta-resena">
+                    <p class="estrellas" aria-label="5 sobre 5">★★★★★</p>
+                    <p>
+                        "Más cómodos de lo que esperaba. Mi yo del pasado
+                        debería haberlos comprado antes."
+                    </p>
+                    <h3>Cliente satisfecho</h3>
+                    <p class="nota">5/5</p>
                 </article>
 
-                <article class="resena">
-                    <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
-                    <blockquote>
-                        «Los compré por el nombre y me quedé por la comodidad.
-                        Una inversión en mi futuro».
-                    </blockquote>
-                    <p class="resena-autor">— Dani R.</p>
+                <article class="tarjeta-resena">
+                    <p class="estrellas" aria-label="5 sobre 5">★★★★★</p>
+                    <p>
+                        "Por fin una compra que no me hace cuestionarme
+                        mis decisiones vitales."
+                    </p>
+                    <h3>Otro cliente feliz</h3>
+                    <p class="nota">5/5</p>
                 </article>
 
-                <article class="resena">
-                    <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
-                    <blockquote>
-                        «Mi cajón de ropa interior necesitaba un cambio de vida.
-                        Gallumbos Ciruelo hizo el resto».
-                    </blockquote>
-                    <p class="resena-autor">— Alex G.</p>
+                <article class="tarjeta-resena">
+                    <p class="estrellas" aria-label="4 sobre 5">★★★★☆</p>
+                    <p>
+                        "Buena experiencia. Mi cajón de ropa interior
+                        está empezando a tener sentido."
+                    </p>
+                    <h3>Cliente casi convencido</h3>
+                    <p class="nota">4/5</p>
                 </article>
+
             </div>
         </section>
 
-        <!-- SOBRE NOSOTROS -->
-        <section id="nosotros" class="seccion nosotros">
+        
+        <!-- Esta sección explica la idea de la marca. -->
+        <section class="seccion nosotros" id="nosotros">
+
+            <div class="encabezado-seccion">
+                <p class="etiqueta">QUIÉNES SOMOS</p>
+                <h2>No prometemos cambiar tu vida. Pero sí tu cajón.</h2>
+            </div>
+
             <div class="nosotros-contenido">
-                <p class="etiqueta">¿QUIÉNES SOMOS?</p>
-                <h2>Pequeños detalles. Grandes ciruelos.</h2>
-
                 <p>
-                    En Gallumbos Ciruelo creemos que la ropa interior no tiene
-                    por qué ser aburrida. Queremos combinar comodidad, personalidad
-                    y un poquito de humor en algo que utilizas todos los días.
+                    En Gallumbos Ciruelo creemos que la comodidad no tiene
+                    por qué ser aburrida. Por eso hemos creado una marca
+                    con personalidad, un poco de humor y muchas ganas de
+                    hacer que lo cotidiano sea menos cotidiano.
                 </p>
 
                 <p>
-                    Nuestra filosofía es sencilla: menos complicaciones,
-                    más comodidad y cero dramas delante del cajón de los gallumbos.
+                    Nuestra filosofía es sencilla: sentirte bien empieza
+                    por las cosas pequeñas. Y sí, eso también incluye
+                    lo que llevas debajo de los pantalones.
                 </p>
-
-                <a href="#contacto" class="btn btn-principal">Hablemos</a>
-            </div>
-
-            <div class="nosotros-visual" aria-hidden="true">
-                <span>🍑</span>
-                <p>HECHOS PARA TI</p>
             </div>
         </section>
 
-        <!-- PRODUCTOS DESTACADOS -->
+        <!-- Dos tarjetas para destacar las ideas principales de la marca. -->
         <section class="seccion destacados">
-            <div class="titulo-seccion">
-                <p class="etiqueta">NUESTROS FAVORITOS</p>
-                <h2>La selección del ciruelo</h2>
-                <p>Dos opciones para empezar con buen pie... o con buen ajuste.</p>
+
+            <div class="encabezado-seccion">
+                <p class="etiqueta">NUESTRO COMPROMISO</p>
+                <h2>Pequeños detalles, grandes verdades</h2>
             </div>
 
-            <div class="destacados-grid">
-                <article class="destacado-card">
-                    <div class="destacado-icono" aria-hidden="true">🔥</div>
-                    <div>
-                        <h3>El favorito de la casa</h3>
-                        <p>El Ciruelón: un clásico que nunca falla.</p>
-                        <a href="#productos" class="enlace-destacado">Descubrir producto →</a>
-                    </div>
+            <div class="rejilla-destacados">
+
+                <article class="tarjeta-destacada">
+                    <span class="icono-destacado" aria-hidden="true">✦</span>
+                    <h3>Calidad sin cuentos</h3>
+                    <p>
+                        Queremos que elegir ropa interior sea fácil:
+                        comodidad y una compra sin dramas innecesarios.
+                    </p>
                 </article>
 
-                <article class="destacado-card">
-                    <div class="destacado-icono" aria-hidden="true">💜</div>
-                    <div>
-                        <h3>Un toque diferente</h3>
-                        <p>El Moradito: personalidad hasta en los detalles.</p>
-                        <a href="#productos" class="enlace-destacado">Descubrir producto →</a>
-                    </div>
+                <article class="tarjeta-destacada">
+                    <span class="icono-destacado" aria-hidden="true">♥</span>
+                    <h3>Dignidad garantizada</h3>
+                    <p>
+                        La vida ya tiene suficientes problemas.
+                        Al menos, que los gallumbos no sean uno de ellos.
+                    </p>
                 </article>
+
             </div>
         </section>
 
-        <!-- PREGUNTAS FRECUENTES -->
-        <section id="faq" class="seccion faq">
-            <div class="titulo-seccion">
+        
+        <!-- Cada details contiene una pregunta y su respuesta.
+        Al pulsar summary, el navegador muestra u oculta el contenido. -->
+
+        <section class="seccion faq" id="faq">
+
+            <div class="encabezado-seccion">
                 <p class="etiqueta">PREGUNTAS FRECUENTES</p>
-                <h2>Resolvemos tus dudas</h2>
-                <p>Lo importante es que te quedes a gusto. En todos los sentidos.</p>
+                <h2>¿Tienes dudas? Normal.</h2>
             </div>
 
-            <div class="faq-lista">
+            <div class="lista-faq">
 
-                <details class="faq-item">
-                    <summary>¿Cuánto tarda en llegar mi pedido?</summary>
-                    <div class="faq-respuesta">
-                        <p>Los envíos se anuncian con un plazo estimado de 24 a 48 horas.</p>
-                    </div>
+                <details>
+                    <summary>¿Qué tipos de gallumbos tenéis?</summary>
+                    <p>
+                        Tenemos tres modelos en esta colección:
+                        Cotidiano, Sport y Premium.
+                    </p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>¿Qué materiales utilizáis?</summary>
-                    <div class="faq-respuesta">
-                        <p>Consulta los detalles de cada producto para conocer sus características y materiales.</p>
-                    </div>
+                <details>
+                    <summary>¿Cuánto cuestan?</summary>
+                    <p>
+                        El Cotidiano y el Sport cuestan 12,99 €.
+                        El Premium cuesta 16,99 €.
+                    </p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>¿Puedo cambiar la talla?</summary>
-                    <div class="faq-respuesta">
-                        <p>Contacta con nosotros para consultar las condiciones de cambios y devoluciones.</p>
-                    </div>
+                <details>
+                    <summary>¿Puedo hacer un pedido desde esta web?</summary>
+                    <p>
+                        Esta página es un proyecto de presentación.
+                        Los botones y las tarjetas muestran los productos,
+                        pero no hay un sistema de compra real conectado.
+                    </p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>¿Cómo puedo ponerme en contacto con vosotros?</summary>
-                    <div class="faq-respuesta">
-                        <p>Puedes utilizar el formulario de contacto que encontrarás al final de esta página.</p>
-                    </div>
+                <details>
+                    <summary>¿Cómo puedo contactar?</summary>
+                    <p>
+                        Puedes utilizar el formulario de la sección de contacto.
+                        En esta versión es solo visual y todavía no envía mensajes.
+                    </p>
                 </details>
 
             </div>
         </section>
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="seccion contacto">
-            <div class="titulo-seccion">
-                <p class="etiqueta">ESTAMOS AL OTRO LADO</p>
-                <h2>¿Hablamos?</h2>
-                <p>¿Tienes dudas, sugerencias o una historia que contar? Te leemos.</p>
+        
+        <!-- El formulario permite escribir datos, pero todavía no los envía
+        a ningún sitio. Para eso haría falta un servidor u otro servicio conectado. -->
+
+        <section class="seccion contacto" id="contacto">
+
+            <div class="encabezado-seccion">
+                <p class="etiqueta">HABLEMOS</p>
+                <h2>¿Tienes algo que contarnos?</h2>
+                <p>Una duda, una sugerencia o una declaración de amor a los gallumbos.</p>
             </div>
 
-            <form class="contacto-formulario" action="#" method="post">
+            <form class="formulario-contacto" action="#" method="post">
+
                 <div class="campo-formulario">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre"
-                           placeholder="¿Cómo te llamas?" required>
+                    <label for="nombre">Tu nombre</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="¿Cómo te llamas?"
+                        required
+                    >
                 </div>
 
                 <div class="campo-formulario">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email"
-                           placeholder="tunombre@ejemplo.com" required>
+                    <label for="correo">Tu correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="tunombre@ejemplo.com"
+                        required
+                    >
                 </div>
 
                 <div class="campo-formulario">
-                    <label for="asunto">Asunto</label>
-                    <input type="text" id="asunto" name="asunto"
-                           placeholder="¿De qué quieres hablar?">
+                    <label for="mensaje">Tu mensaje</label>
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        rows="5"
+                        placeholder="Cuéntanos..."
+                        required
+                    ></textarea>
                 </div>
 
-                <div class="campo-formulario">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="5"
-                              placeholder="Escribe aquí tu mensaje..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-principal boton-enviar">
+                <button class="boton boton-principal" type="submit">
                     Enviar mensaje
                 </button>
 
-                <p class="aviso-formulario">
-                    Este formulario es una demostración visual y todavía no envía mensajes.
-                </p>
             </form>
         </section>
 
+
     </main>
 
-    <!-- PIE DE PÁGINA -->
-    <footer class="footer">
-        <a href="#inicio" class="footer-logo">Gallumbos Ciruelo 🍑</a>
-
-        <p>Ropa interior con personalidad. Y con sentido del humor.</p>
-
-        <div class="footer-enlaces">
-            <a href="#productos">Productos</a>
-            <a href="#nosotros">Sobre nosotros</a>
-            <a href="#faq">Preguntas frecuentes</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-
-        <p class="copyright">
-            © 2026 Gallumbos Ciruelo. Todos los derechos reservados.
-        </p>
+    <footer class="pie-pagina">
+        <p>© 2025 Gallumbos Ciruelo. Todos los derechos reservados.</p>
+        <p>Hecho con dignidad, humor y un poquito de morado.</p>
+        <a href="#inicio">Volver arriba ↑</a>
     </footer>
 
-    <!-- Elemento decorativo fijo -->
-    <div class="ciruela-fija" aria-hidden="true">🍑</div>
+    <div class="decoracion-fija" aria-hidden="true">🍑</div>
 
 </body>
 </html>
+

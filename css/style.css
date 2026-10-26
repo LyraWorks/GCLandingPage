@@ -1,211 +1,242 @@
 
-/* =========================================
-   ESTILOS GENERALES
-========================================= */
+/* ==================================================
+   1. COLORES DE LA WEB
+   ================================================== */
+
+/* :root representa el elemento principal de la página.
+   Aquí guardo variables, que son valores con un nombre propio.
+
+   Por ejemplo, --morado guarda el color morado principal.
+   Para utilizarlo más abajo escribo var(--morado).
+
+   Así no tengo que acordarme del código del color cada vez.
+   Si cambio el valor aquí, cambiará en todos los sitios que
+   utilicen esta variable.
+
+   Los dos guiones del principio son necesarios para crear
+   una variable de CSS. El nombre tiene que coincidir cuando la use. */
 
 :root {
     --fondo: #0f0f14;
-    --caja: #181822;
     --morado: #b100ff;
     --morado-suave: #7a1cff;
     --morado-hover: #e600ff;
     --texto: #eaeaea;
     --texto-secundario: #b5b5b5;
-    --borde: #343044;
-    --radio: 14px;
-    --sombra: 0 8px 25px rgba(0, 0, 0, 0.25);
+    --caja: #181822;
 }
 
+
+/* ==================================================
+   2. AJUSTES GENERALES
+   ================================================== */
+
+/* El asterisco selecciona los elementos de la página.
+   margin es el espacio por fuera de una caja.
+   padding es el espacio por dentro de la caja.
+
+   Los pongo a cero para quitar los espacios que añade el navegador
+   por defecto y empezar con una base más fácil de controlar.
+
+   box-sizing: border-box hace que el ancho que indique incluya
+   también el padding y el borde. Así es más fácil calcular tamaños. */
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 85px;
+    /* Hace que los enlaces internos bajen suavemente por la página. */
 }
 
 body {
-    margin: 0;
     background-color: var(--fondo);
     color: var(--texto);
     font-family: "Open Sans", sans-serif;
     line-height: 1.6;
+    /* line-height controla el espacio entre líneas de texto. */
 }
 
 h1,
 h2,
-h3,
-h4 {
+h3 {
     font-family: "Montserrat", sans-serif;
-    line-height: 1.25;
-}
-
-h1,
-h2,
-h3,
-p {
-    margin-top: 0;
+    line-height: 1.2;
 }
 
 h2 {
-    font-size: clamp(1.8rem, 4vw, 2.7rem);
-    margin-bottom: 16px;
-}
-
-h3 {
-    font-size: 1.25rem;
+    font-size: 2.2rem;
 }
 
 p {
     color: var(--texto-secundario);
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
+/* Evita que las imágenes sean más anchas que su espacio disponible. */
 img {
-    display: block;
     max-width: 100%;
+    display: block;
 }
 
-button,
-input,
-textarea {
-    font: inherit;
-}
 
-::selection {
-    background-color: var(--morado);
-    color: white;
-}
+/* ==================================================
+   3. ENLACE PARA SALTARSE EL MENÚ
+   ================================================== */
 
-:focus-visible {
-    outline: 3px solid var(--morado-hover);
-    outline-offset: 4px;
-}
-
-/* Enlace para mejorar la accesibilidad */
+/* Este enlace se usa con el teclado.
+   Lo escondo de la vista normal, pero aparece cuando recibe el foco. */
 
 .saltar-contenido {
     position: absolute;
-    top: -100px;
-    left: 15px;
-    z-index: 1000;
-    padding: 10px 16px;
+    left: -9999px;
+    top: 10px;
     background-color: var(--morado);
     color: white;
-    border-radius: 8px;
+    padding: 10px 15px;
+    z-index: 1000;
 }
 
 .saltar-contenido:focus {
-    top: 15px;
+    left: 10px;
 }
 
-/* =========================================
-   CABECERA
-========================================= */
+
+/* ==================================================
+   4. CABECERA Y LOGO
+   ================================================== */
+
+/* Esta es la zona de arriba de la página.
+   padding deja espacio por dentro, para que el contenido no quede pegado. */
 
 .cabecera {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 25px 5%;
+    padding: 30px 20px;
+    text-align: center;
     background-color: var(--fondo);
-    text-align: left;
-}
-
-.logo-enlace {
-    flex-shrink: 0;
 }
 
 .logo {
-    width: 105px;
-    height: auto;
-    object-fit: contain;
+    display: flex;
+    /* flex permite colocar la imagen y el texto en la misma fila. */
+
+    align-items: center;
+    /* Centra verticalmente la imagen y el texto. */
+
+    justify-content: center;
+    /* Centra el conjunto horizontalmente. */
+
+    gap: 18px;
+    /* Separa la imagen del texto. Puedes aumentar este valor. */
 }
 
-.cabecera-texto h1 {
-    margin-bottom: 5px;
-    color: var(--morado);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 800;
-    text-shadow: 0 0 15px rgba(177, 0, 255, 0.25);
+.logo img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    /* cover llena el espacio, pero puede recortar un poco la imagen. */
+
+    border-radius: 50%;
+    /* Con 50% la imagen queda redonda si su caja es cuadrada. */
+
+    border: 2px solid var(--morado);
 }
 
-.cabecera-texto p {
-    margin-bottom: 0;
+.nombre-marca h1 {
+    font-size: 2rem;
+    color: var(--texto);
+}
+
+.nombre-marca p {
+    margin-top: 6px;
     font-size: 0.95rem;
 }
 
-/* =========================================
-   MENÚ DE NAVEGACIÓN
-========================================= */
 
-.navegacion {
+/* ==================================================
+   5. MENÚ
+   ================================================== */
+
+/* sticky hace que el menú se quede pegado arriba al bajar por la página.
+   top: 0 indica dónde se pega.
+   z-index controla qué elementos aparecen por delante de otros. */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Permite que los enlaces pasen a otra línea si no caben. */
+
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: var(--caja);
+
     position: sticky;
     top: 0;
     z-index: 100;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 16px;
-    background-color: rgba(24, 24, 34, 0.97);
-    border-top: 1px solid var(--borde);
-    border-bottom: 1px solid var(--borde);
+
+    border-top: 1px solid rgba(177, 0, 255, 0.25);
+    border-bottom: 1px solid rgba(177, 0, 255, 0.25);
 }
 
-.navegacion a {
-    padding: 9px 15px;
-    border-radius: 8px;
+.menu a {
     color: var(--texto);
+    text-decoration: none;
+    /* Quita el subrayado típico de los enlaces. */
+
     font-size: 0.9rem;
-    font-weight: 600;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.3s, background-color 0.3s;
 }
 
-.navegacion a:hover {
-    background-color: var(--morado-suave);
+.menu a:hover {
+    /* hover son los estilos que se aplican al pasar el ratón por encima. */
     color: white;
+    background-color: var(--morado-suave);
 }
 
-/* =========================================
-   BARRA DE MARCA Y MARQUESINA
-========================================= */
 
-.barra-marca {
-    overflow: hidden;
-    padding: 10px 0;
-    background-color: var(--caja);
-    border-top: 1px solid var(--morado-suave);
-    border-bottom: 1px solid var(--morado-suave);
-}
+/* ==================================================
+   6. MARQUESINA
+   ================================================== */
+
+/* overflow: hidden esconde lo que sobresale de la barra.
+   nowrap evita que el texto se parta en varias líneas. */
 
 .marquesina {
-    width: 100%;
     overflow: hidden;
     white-space: nowrap;
+    background-color: var(--morado);
+    color: white;
+    padding: 10px 0;
 }
 
-.marquesina-track {
+.marquesina-contenido {
     display: flex;
     width: max-content;
+
+    /* La animación tarda 18 segundos en hacer una vuelta.
+       Si pongo 30s, se moverá más despacio.
+       Si pongo 10s, irá más rápido.
+       infinite hace que se repita sin parar. */
+
     animation: mover-marquesina 18s linear infinite;
 }
 
-.marquesina-track span {
+.marquesina-contenido span {
     flex-shrink: 0;
-    padding-right: 10px;
-    color: var(--texto);
-    font-size: 0.95rem;
-    font-weight: 600;
+    padding-right: 30px;
+    color: white;
+    font-weight: 700;
 }
 
-/* Movimiento continuo de la barra */
+/* Aquí se define el movimiento.
+   from es la posición inicial y to la posición final.
+   translateX mueve el texto en horizontal.
+   El -50% desplaza el contenido hacia la izquierda. */
 
 @keyframes mover-marquesina {
     from {
@@ -217,928 +248,635 @@ textarea {
     }
 }
 
-/* Respetar la preferencia de reducir movimiento */
 
-@media (prefers-reduced-motion: reduce) {
-    .marquesina-track {
-        animation: none;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+/* ==================================================
+   7. BOTONES
+   ================================================== */
 
-    .marquesina-track span[aria-hidden="true"] {
-        display: none;
-    }
-}
+/* Esta clase tiene las cosas que comparten los botones.
+   Después cada uno tendrá su propio color. */
 
-/* =========================================
-   BOTONES
-========================================= */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 45px;
+.boton {
+    display: inline-block;
     padding: 12px 22px;
-    border: 2px solid transparent;
-    border-radius: 9px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.9rem;
+    border-radius: 8px;
     font-weight: 700;
+    text-decoration: none;
     text-align: center;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
     cursor: pointer;
-    transition: background-color 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
+    font-family: "Montserrat", sans-serif;
 }
 
-.btn:hover {
+.boton-principal {
+    background-color: var(--morado);
+    color: white;
+    border: 2px solid var(--morado);
+}
+
+.boton-principal:hover {
+    background-color: var(--morado-hover);
+    border-color: var(--morado-hover);
     transform: translateY(-2px);
+    /* Mueve el botón un poco hacia arriba al pasar el ratón. */
 }
 
-.btn-principal {
+.boton-secundario {
+    background-color: transparent;
+    color: var(--texto);
+    border: 2px solid var(--morado);
+}
+
+.boton-secundario:hover {
     background-color: var(--morado);
     color: white;
 }
 
-.btn-principal:hover {
-    background-color: var(--morado-hover);
-}
 
-.btn-secundario {
-    border-color: var(--morado);
-    background-color: transparent;
-    color: var(--texto);
-}
+/* ==================================================
+   8. PORTADA
+   ================================================== */
 
-.btn-secundario:hover {
-    background-color: var(--morado-suave);
-    color: white;
-}
+/* flex coloca el texto y la decoración en la misma fila.
+   gap deja espacio entre las dos partes.
+   min-height establece una altura mínima, pero puede crecer si hace falta. */
 
-/* =========================================
-   INICIO
-========================================= */
-
-.inicio {
-    position: relative;
+.portada {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    min-height: 440px;
+
     padding: 80px 8%;
-    overflow: hidden;
+    min-height: 450px;
+
+    /* Este fondo añade un brillo morado sobre el fondo oscuro.
+       radial-gradient crea un degradado redondo.
+       Si quito la primera línea, desaparece el brillo. */
+
     background:
-        radial-gradient(
-            circle at 85% 50%,
-            rgba(122, 28, 255, 0.16),
-            transparent 38%
-        ),
+        radial-gradient(circle at 85% 45%, rgba(177, 0, 255, 0.18), transparent 35%),
         var(--fondo);
 }
 
-.inicio-contenido {
-    position: relative;
-    z-index: 2;
-    max-width: 680px;
+.portada-texto {
+    max-width: 650px;
+    flex: 1;
 }
 
 .etiqueta {
-    margin-bottom: 12px;
     color: var(--morado);
-    font-size: 0.76rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
 }
 
-.inicio h2 {
-    max-width: 650px;
+/* clamp permite que el tamaño del título se adapte a la pantalla.
+   2.2rem es el mínimo, 5vw es el tamaño que intenta usar
+   y 4rem es el máximo. */
+
+.portada h2 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
     margin-bottom: 20px;
-    font-size: clamp(2.3rem, 5vw, 4.2rem);
-    font-weight: 800;
 }
 
-.inicio-descripcion {
+.portada-texto > p:not(.etiqueta) {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
     max-width: 550px;
-    margin-bottom: 28px;
-    font-size: 1.05rem;
 }
 
-.inicio-botones {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+.portada-texto .boton {
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-.inicio-decoracion {
-    position: relative;
+.portada-decoracion {
     display: flex;
-    flex-shrink: 0;
-    align-items: center;
     justify-content: center;
-    width: 270px;
-    height: 270px;
-}
+    align-items: center;
 
-.circulo-decorativo {
-    position: absolute;
-    display: block;
-    border: 2px solid var(--morado-suave);
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+
     border-radius: 50%;
+    background-color: rgba(177, 0, 255, 0.12);
+    border: 2px solid rgba(177, 0, 255, 0.5);
+    box-shadow: 0 0 50px rgba(177, 0, 255, 0.2);
 }
 
-.circulo-uno {
-    width: 230px;
-    height: 230px;
-    opacity: 0.7;
+.portada-decoracion span {
+    font-size: 7rem;
 }
 
-.circulo-dos {
-    width: 180px;
-    height: 180px;
-    border-color: var(--morado);
-    opacity: 0.5;
-}
 
-.texto-decorativo {
-    position: absolute;
-    z-index: 1;
-    color: var(--texto);
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
-    text-align: center;
-    letter-spacing: 2px;
-}
+/* ==================================================
+   9. ESTILOS GENERALES DE LAS SECCIONES
+   ================================================== */
 
-.emoji-decorativo {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    font-size: 3rem;
-}
-
-/* =========================================
-   SECCIONES GENERALES
-========================================= */
+/* Como varias secciones necesitan el mismo espacio interior,
+   utilizo una clase común llamada seccion.
+   Si cambio el padding aquí, cambiará en todas las secciones que la usen. */
 
 .seccion {
     padding: 80px 8%;
-    scroll-margin-top: 85px;
+    scroll-margin-top: 100px;
+    /* Deja espacio arriba al saltar a una sección, para que el menú
+       no tape el título. */
 }
 
-.titulo-seccion {
-    max-width: 750px;
-    margin: 0 auto 40px;
+.encabezado-seccion {
     text-align: center;
+    max-width: 750px;
+    margin: 0 auto 45px;
+    /* auto centra el bloque horizontalmente. */
+
 }
 
-.titulo-seccion h2 {
-    margin-bottom: 14px;
+.encabezado-seccion h2 {
+    margin-bottom: 15px;
 }
 
-.titulo-seccion > p:last-child {
-    margin-bottom: 0;
+.encabezado-seccion > p:last-child {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* =========================================
-   PRODUCTOS
-========================================= */
 
-.productos {
-    background-color: #13131a;
-}
+/* ==================================================
+   10. PRODUCTOS
+   ================================================== */
 
-.productos-grid {
+/* grid coloca las tarjetas en filas y columnas.
+   repeat(3, 1fr) crea tres columnas del mismo tamaño.
+   gap controla la separación entre ellas. */
+
+.rejilla-productos {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.producto {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    min-width: 0;
+.tarjeta-producto {
     background-color: var(--caja);
-    border: 1px solid var(--borde);
-    border-radius: var(--radio);
-    box-shadow: var(--sombra);
-    transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.producto:hover {
-    transform: translateY(-5px);
-    border-color: var(--morado-suave);
-}
-
-.producto-imagen {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 210px;
+    border: 1px solid rgba(177, 0, 255, 0.25);
+    border-radius: 14px;
     overflow: hidden;
+
+    /* Suaviza los cambios que ocurren cuando pasamos el ratón. */
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
-.imagen-ciruela {
-    background: linear-gradient(135deg, #321344, #7024a5);
+.tarjeta-producto:hover {
+    transform: translateY(-6px);
+    border-color: var(--morado);
+    box-shadow: 0 10px 30px rgba(177, 0, 255, 0.12);
 }
 
-.imagen-neon {
-    background: linear-gradient(135deg, #241344, #7a1cff);
-}
+.tarjeta-producto > img {
+    width: 100%;
+    height: 260px;
 
-.imagen-premium {
-    background: linear-gradient(135deg, #22202b, #4a315a);
-}
+    /* contain muestra la imagen entera, aunque puedan quedar espacios.
+       Si usara cover, llenaría la caja, pero podría cortar la foto. */
+    object-fit: contain;
 
-.producto-emoji {
-    font-size: 5rem;
-    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.25));
-}
-
-.producto-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    padding: 6px 11px;
-    background-color: var(--morado);
-    color: white;
-    border-radius: 6px;
-    font-size: 0.72rem;
-    font-weight: 800;
-}
-
-.badge-nuevo {
-    background-color: #e600a9;
-}
-
-.badge-premium {
-    background-color: #c99b45;
-    color: #17120b;
+    padding: 20px;
+    background-color: #13131b;
 }
 
 .producto-info {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
     padding: 22px;
 }
 
-.producto-categoria {
-    margin-bottom: 8px;
-    color: var(--morado);
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 1.3px;
-}
-
 .producto-info h3 {
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-.producto-descripcion {
-    flex: 1;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-}
-
-.producto-pie {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 18px;
-}
-
-.precio {
-    color: var(--texto);
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.35rem;
-    font-weight: 800;
-}
-
-/* Detalles desplegables de cada producto */
-
-.detalles-producto {
-    border-top: 1px solid var(--borde);
-    padding-top: 15px;
-}
-
-.btn-detalles {
-    width: 100%;
-    list-style: none;
-}
-
-.btn-detalles::-webkit-details-marker {
-    display: none;
-}
-
-.btn-detalles::marker {
-    content: "";
-}
-
-.detalles-producto[open] .btn-detalles {
+.producto-info > p {
     margin-bottom: 12px;
 }
 
-.detalles-contenido {
-    padding: 12px;
-    background-color: #111119;
-    border-radius: 8px;
+.precio {
+    color: var(--morado-hover);
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
-.detalles-contenido p {
-    margin-bottom: 8px;
-    font-size: 0.85rem;
+.detalles-producto {
+    margin-top: 15px;
+    border-top: 1px solid rgba(177, 0, 255, 0.25);
+    padding-top: 12px;
 }
 
-.detalles-contenido p:last-child {
-    margin-bottom: 0;
+.detalles-producto summary {
+    color: var(--morado);
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.detalles-contenido strong {
-    color: var(--texto);
+.detalles-producto p {
+    margin-top: 12px;
 }
 
-/* =========================================
-   RESEÑAS
-========================================= */
+
+/* ==================================================
+   11. RESEÑAS
+   ================================================== */
 
 .resenas {
-    background-color: var(--fondo);
+    background-color: #13131b;
 }
 
-.resenas-grid {
+.rejilla-resenas {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
-.resena {
-    padding: 28px;
+.tarjeta-resena {
+    padding: 25px;
     background-color: var(--caja);
-    border: 1px solid var(--borde);
-    border-radius: var(--radio);
-    transition: border-color 0.25s ease, transform 0.25s ease;
-}
-
-.resena:hover {
-    transform: translateY(-4px);
-    border-color: var(--morado-suave);
+    border: 1px solid rgba(177, 0, 255, 0.2);
+    border-radius: 12px;
 }
 
 .estrellas {
-    margin-bottom: 15px;
-    color: #ffc857;
-    font-size: 1.2rem;
+    color: #ffd166;
+    font-size: 1.5rem;
     letter-spacing: 3px;
+    margin-bottom: 15px;
 }
 
-.resena blockquote {
-    margin: 0 0 20px;
+.tarjeta-resena h3 {
+    font-size: 1rem;
+    margin-top: 20px;
     color: var(--texto);
-    font-size: 0.95rem;
-    font-style: italic;
 }
 
-.resena-autor {
-    margin-bottom: 0;
+.nota {
     color: var(--morado);
     font-weight: 700;
+    margin-top: 5px;
 }
 
-/* =========================================
-   SOBRE NOSOTROS
-========================================= */
 
-.nosotros {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    align-items: center;
-    gap: 50px;
-    background-color: #13131a;
-}
+/* ==================================================
+   12. SOBRE NOSOTROS
+   ================================================== */
 
 .nosotros-contenido {
-    max-width: 700px;
-}
-
-.nosotros-contenido h2 {
-    margin-bottom: 22px;
-}
-
-.nosotros-contenido p:not(.etiqueta) {
-    margin-bottom: 18px;
-}
-
-.nosotros-contenido .btn {
-    margin-top: 8px;
-}
-
-.nosotros-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 270px;
-    padding: 30px;
-    background:
-        radial-gradient(circle, rgba(177, 0, 255, 0.2), transparent 70%),
-        var(--caja);
-    border: 1px solid var(--borde);
-    border-radius: var(--radio);
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.nosotros-visual span {
-    font-size: 6rem;
+.nosotros-contenido p {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
 }
 
-.nosotros-visual p {
-    margin: 15px 0 0;
-    color: var(--morado);
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-}
 
-/* =========================================
-   PRODUCTOS DESTACADOS
-========================================= */
+/* ==================================================
+   13. DESTACADOS
+   ================================================== */
 
-.destacados {
-    background-color: var(--fondo);
-}
+/* Como aquí hay dos tarjetas, utilizo dos columnas iguales.
+   1fr significa que cada columna se queda con una parte del espacio. */
 
-.destacados-grid {
+.rejilla-destacados {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
-.destacado-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 25px;
+.tarjeta-destacada {
+    padding: 35px;
     background-color: var(--caja);
-    border: 1px solid var(--borde);
-    border-radius: var(--radio);
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    border: 1px solid rgba(177, 0, 255, 0.35);
+    border-radius: 14px;
+    text-align: center;
 }
 
-.destacado-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--morado);
-}
-
-.destacado-icono {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 55px;
-    height: 55px;
-    background-color: rgba(177, 0, 255, 0.15);
-    border-radius: 12px;
-    font-size: 1.8rem;
-}
-
-.destacado-card h3 {
-    margin-bottom: 10px;
-}
-
-.destacado-card p {
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-}
-
-.enlace-destacado {
+.icono-destacado {
+    display: inline-block;
+    font-size: 2.5rem;
     color: var(--morado);
-    font-size: 0.9rem;
-    font-weight: 700;
+    margin-bottom: 15px;
 }
 
-.enlace-destacado:hover {
-    color: var(--morado-hover);
-    text-decoration: underline;
+.tarjeta-destacada h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
 }
 
-/* =========================================
-   PREGUNTAS FRECUENTES
-========================================= */
 
-.faq {
-    background-color: #13131a;
-}
+/* ==================================================
+   14. PREGUNTAS FRECUENTES
+   ================================================== */
 
-.faq-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.lista-faq {
     max-width: 850px;
     margin: 0 auto;
 }
 
-.faq-item {
-    overflow: hidden;
+.lista-faq details {
     background-color: var(--caja);
-    border: 1px solid var(--borde);
-    border-radius: 10px;
-    transition: border-color 0.25s ease;
+    border: 1px solid rgba(177, 0, 255, 0.25);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
 }
 
-.faq-item[open] {
-    border-color: var(--morado-suave);
-}
-
-.faq-item summary {
-    position: relative;
-    padding: 20px 50px 20px 20px;
-    color: var(--texto);
+.lista-faq summary {
     font-weight: 700;
+    color: var(--texto);
     cursor: pointer;
-    list-style: none;
 }
 
-.faq-item summary::-webkit-details-marker {
-    display: none;
+.lista-faq details p {
+    margin-top: 15px;
 }
 
-.faq-item summary::after {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    color: var(--morado);
-    content: "+";
-    font-size: 1.5rem;
-    transform: translateY(-50%);
-}
 
-.faq-item[open] summary::after {
-    content: "−";
-}
+/* ==================================================
+   15. FORMULARIO
+   ================================================== */
 
-.faq-respuesta {
-    padding: 0 20px 18px;
-}
+/* El formulario no ocupa más de 650 píxeles, aunque la pantalla
+   sea más grande. width: 100% permite que se adapte si hay menos espacio. */
 
-.faq-respuesta p {
-    margin-bottom: 0;
-    font-size: 0.92rem;
-}
-
-/* =========================================
-   CONTACTO
-========================================= */
-
-.contacto {
-    background-color: var(--fondo);
-}
-
-.contacto-formulario {
-    max-width: 700px;
+.formulario-contacto {
+    width: 100%;
+    max-width: 650px;
     margin: 0 auto;
-    padding: 32px;
+    padding: 30px;
     background-color: var(--caja);
-    border: 1px solid var(--borde);
-    border-radius: var(--radio);
-    box-shadow: var(--sombra);
+    border: 1px solid rgba(177, 0, 255, 0.25);
+    border-radius: 14px;
 }
 
 .campo-formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .campo-formulario label {
+    display: block;
+    margin-bottom: 8px;
     color: var(--texto);
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
 }
+
+/* Estos estilos se aplican a los campos donde se escribe.
+   input sirve para datos cortos y textarea para mensajes largos. */
 
 .campo-formulario input,
 .campo-formulario textarea {
     width: 100%;
     padding: 13px 15px;
-    background-color: #101018;
-    border: 1px solid var(--borde);
-    border-radius: 8px;
+    border: 1px solid #3b3b49;
+    border-radius: 7px;
+    background-color: #101017;
     color: var(--texto);
-    outline: none;
-    transition: border-color 0.25s ease;
+    font: inherit;
 }
 
-.campo-formulario input::placeholder,
-.campo-formulario textarea::placeholder {
-    color: #85818f;
-}
-
+/* focus se aplica cuando seleccionamos un campo para escribir. */
 .campo-formulario input:focus,
 .campo-formulario textarea:focus {
+    outline: none;
     border-color: var(--morado);
+    box-shadow: 0 0 0 2px rgba(177, 0, 255, 0.15);
 }
 
 .campo-formulario textarea {
-    min-height: 140px;
     resize: vertical;
+    /* Permite cambiar la altura del cuadro de texto, pero no su anchura. */
 }
 
-.boton-enviar {
+.formulario-contacto button {
     width: 100%;
     border: none;
+    font-size: 1rem;
 }
 
-.aviso-formulario {
-    margin: 15px 0 0;
-    font-size: 0.78rem;
+
+/* ==================================================
+   16. PIE DE PÁGINA
+   ================================================== */
+
+.pie-pagina {
+    padding: 30px 20px;
     text-align: center;
-}
-
-/* =========================================
-   PIE DE PÁGINA
-========================================= */
-
-.footer {
-    padding: 45px 8% 25px;
     background-color: #09090d;
-    border-top: 1px solid var(--borde);
-    text-align: center;
+    border-top: 1px solid rgba(177, 0, 255, 0.25);
 }
 
-.footer-logo {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--morado);
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.4rem;
-    font-weight: 800;
-}
-
-.footer > p {
+.pie-pagina p {
+    margin-bottom: 8px;
     font-size: 0.9rem;
 }
 
-.footer-enlaces {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin: 25px 0;
-}
-
-.footer-enlaces a {
-    color: var(--texto-secundario);
-    font-size: 0.85rem;
-    transition: color 0.25s ease;
-}
-
-.footer-enlaces a:hover {
+.pie-pagina a {
+    display: inline-block;
+    margin-top: 12px;
     color: var(--morado);
+    text-decoration: none;
 }
 
-.copyright {
-    margin: 0;
-    padding-top: 20px;
-    border-top: 1px solid #27232e;
-    font-size: 0.78rem !important;
+.pie-pagina a:hover {
+    color: var(--morado-hover);
 }
 
-/* =========================================
-   ELEMENTO DECORATIVO FIJO
-========================================= */
 
-.ciruela-fija {
+/* ==================================================
+   17. DECORACIÓN FIJA
+   ================================================== */
+
+/* fixed deja el emoji en el mismo sitio de la pantalla aunque bajemos.
+   right y bottom indican su distancia desde los bordes. */
+
+.decoracion-fija {
     position: fixed;
     right: 18px;
-    bottom: 15px;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background-color: rgba(24, 24, 34, 0.9);
-    border: 1px solid var(--morado-suave);
-    border-radius: 50%;
-    font-size: 1.5rem;
+    bottom: 18px;
+    font-size: 2rem;
+    opacity: 0.65;
     pointer-events: none;
+    /* Evita que la decoración interfiera con los clics. */
+
+    z-index: 50;
 }
 
-/* =========================================
-   BARRA DE DESPLAZAMIENTO
-========================================= */
 
-::-webkit-scrollbar {
-    width: 10px;
-}
+/* ==================================================
+   18. ADAPTACIÓN A TABLETS
+   ================================================== */
 
-::-webkit-scrollbar-track {
-    background-color: var(--fondo);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--morado-suave);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: var(--morado);
-}
-
-/* =========================================
-   DISEÑO ADAPTABLE A TABLETS
-========================================= */
+/* @media permite cambiar los estilos cuando se cumple una condición.
+   Aquí se aplica cuando la pantalla mide 950 píxeles o menos.
+   No sustituye el CSS anterior: modifica algunas cosas para ese tamaño. */
 
 @media (max-width: 950px) {
-    .inicio {
-        padding: 65px 6%;
+
+    .portada {
+        padding: 65px 5%;
+        gap: 25px;
     }
 
-    .inicio-decoracion {
-        width: 220px;
-        height: 220px;
-    }
-
-    .circulo-uno {
-        width: 200px;
-        height: 200px;
-    }
-
-    .circulo-dos {
-        width: 155px;
-        height: 155px;
-    }
-
-    .seccion {
-        padding: 65px 6%;
-    }
-
-    .productos-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .resenas-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .resena:last-child {
-        grid-column: 1 / -1;
-    }
-
-    .nosotros {
-        gap: 30px;
-    }
-}
-
-/* =========================================
-   DISEÑO ADAPTABLE A MÓVILES
-========================================= */
-
-@media (max-width: 650px) {
-    html {
-        scroll-padding-top: 120px;
-    }
-
-    .cabecera {
-        flex-direction: column;
-        gap: 10px;
-        padding: 22px 5%;
-        text-align: center;
-    }
-
-    .logo {
-        width: 85px;
-    }
-
-    .cabecera-texto h1 {
-        font-size: 1.8rem;
-    }
-
-    .cabecera-texto p {
-        font-size: 0.85rem;
-    }
-
-    .navegacion {
-        gap: 4px;
-        padding: 8px;
-    }
-
-    .navegacion a {
-        padding: 8px 10px;
-        font-size: 0.8rem;
-    }
-
-    .marquesina-track span {
-        font-size: 0.85rem;
-    }
-
-    .inicio {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 55px 6%;
-    }
-
-    .inicio h2 {
-        font-size: 2.4rem;
-    }
-
-    .inicio-decoracion {
-        align-self: center;
+    .portada-decoracion {
         width: 190px;
         height: 190px;
     }
 
-    .circulo-uno {
-        width: 175px;
-        height: 175px;
-    }
-
-    .circulo-dos {
-        width: 135px;
-        height: 135px;
-    }
-
-    .emoji-decorativo {
-        right: -5px;
-        bottom: -5px;
-        font-size: 2.4rem;
+    .portada-decoracion span {
+        font-size: 5rem;
     }
 
     .seccion {
-        padding: 55px 6%;
+        padding: 65px 5%;
     }
 
-    .titulo-seccion {
-        margin-bottom: 30px;
+    /* En lugar de tres columnas, dejo dos para dar más espacio
+       a las tarjetas en pantallas medianas. */
+    .rejilla-productos,
+    .rejilla-resenas {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .productos-grid,
-    .resenas-grid,
-    .destacados-grid,
-    .nosotros {
-        grid-template-columns: 1fr;
-    }
-
-    .resena:last-child {
-        grid-column: auto;
-    }
-
-    .producto-imagen {
-        min-height: 190px;
-    }
-
-    .nosotros-visual {
-        min-height: 220px;
-    }
-
-    .contacto-formulario {
-        padding: 22px;
-    }
-
-    .footer {
-        padding: 35px 6% 20px;
-    }
-
-    .footer-enlaces {
-        gap: 12px;
-    }
-
-    .ciruela-fija {
-        right: 10px;
-        bottom: 10px;
-        width: 40px;
-        height: 40px;
-        font-size: 1.25rem;
+    .tarjeta-producto:last-child {
+        grid-column: 1 / -1;
+        max-width: 500px;
+        width: 100%;
+        justify-self: center;
     }
 }
 
-/* =========================================
-   ACCESIBILIDAD: REDUCIR MOVIMIENTO
-========================================= */
+
+/* ==================================================
+   19. ADAPTACIÓN A MÓVILES
+   ================================================== */
+
+/* En pantallas de 650 píxeles o menos hago cambios adicionales.
+   Estos estilos se aplican junto con los generales y los de tablet,
+   por lo que algunas propiedades se sobrescriben. */
+
+@media (max-width: 650px) {
+
+    .cabecera {
+        padding: 22px 15px;
+    }
+
+    .logo {
+        flex-direction: column;
+        /* Coloca la imagen encima del texto en vez de al lado. */
+        gap: 12px;
+    }
+
+    .nombre-marca h1 {
+        font-size: 1.6rem;
+    }
+
+    .nombre-marca p {
+        font-size: 0.85rem;
+    }
+
+    .menu {
+        gap: 4px;
+        padding: 10px;
+    }
+
+    .menu a {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .portada {
+        flex-direction: column;
+        text-align: center;
+        padding: 55px 20px;
+    }
+
+    .portada-texto > p:not(.etiqueta) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .portada-decoracion {
+        width: 160px;
+        height: 160px;
+    }
+
+    .portada-decoracion span {
+        font-size: 4rem;
+    }
+
+    .seccion {
+        padding: 55px 20px;
+    }
+
+    .encabezado-seccion h2 {
+        font-size: 1.8rem;
+    }
+
+    /* En el móvil todas las tarjetas pasan a una sola columna.
+       Así no quedan estrechas ni se pisan unas con otras. */
+    .rejilla-productos,
+    .rejilla-resenas,
+    .rejilla-destacados {
+        grid-template-columns: 1fr;
+    }
+
+    /* Como ahora hay una columna, ya no necesito que la última
+       tarjeta ocupe varias columnas. */
+    .tarjeta-producto:last-child {
+        grid-column: auto;
+        max-width: none;
+    }
+
+    .tarjeta-producto > img {
+        height: 230px;
+    }
+
+    .formulario-contacto {
+        padding: 22px;
+    }
+
+    .decoracion-fija {
+        right: 10px;
+        bottom: 10px;
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ==================================================
+   20. REDUCIR ANIMACIONES
+   ================================================== */
+
+/* Algunos dispositivos permiten indicar que se prefieren menos animaciones.
+   Si esa opción está activada, reduzco los movimientos de la página.
+   El contenido sigue apareciendo, pero sin tantos efectos. */
 
 @media (prefers-reduced-motion: reduce) {
+
+    .marquesina-contenido {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
     }
 }
